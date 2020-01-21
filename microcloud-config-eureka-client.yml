@@ -1,0 +1,46 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+spring:
+  profiles: dev
+  application:
+    name: microcloud-config-eureka-client
+server:
+  port: 7001
+security:
+  basic:
+    enabled: true   # 启用安全认证处理
+  user:
+    name: edmindev     # 用户名
+    password: studyjava  # 密码
+eureka:
+  client: # 客户端进行Eureka注册的配置
+    service-url:
+      defaultZone: http://edmindev:studyjava@eureka-7001.com:7001/eureka
+    register-with-eureka: false    # 当前的微服务不注册到eureka之中
+    fetch-registry: false     # 不通过eureka获取注册信息
+  instance: # eureak实例定义
+    hostname: eureka-7001.com # 定义Eureka实例所在的主机名称
+---
+spring:
+  profiles: beta
+  application:
+    name: microcloud-config-eureka-client
+server:
+  port: 7001
+security:
+  basic:
+    enabled: true   # 启用安全认证处理
+  user:
+    name: edminbeta     # 用户名
+    password: studyjava  # 密码
+eureka:
+  client: # 客户端进行Eureka注册的配置
+    service-url:
+      defaultZone: http://edminbeta:studyjava@eureka-7001.com:7001/eureka
+    register-with-eureka: false    # 当前的微服务不注册到eureka之中
+    fetch-registry: false     # 不通过eureka获取注册信息
+  instance: # eureak实例定义
+    hostname: eureka-7001.com # 定义Eureka实例所在的主机名称
